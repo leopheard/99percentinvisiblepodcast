@@ -3,7 +3,6 @@ from resources.lib import mainaddon
 
 plugin = Plugin()
 
-# base url for fetching podcasts 
 URL = "http://feeds.99percentinvisible.org/99percentinvisible"
 
 @plugin.route('/')
@@ -22,7 +21,6 @@ def main_menu():
             'thumbnail': "https://f.prxu.org/96/images/a52a20dd-7b8e-46be-86a0-dda86b0953fc/99-300.png"},
     ]
     return items
-
 
 @plugin.route('/all_episodes/')
 def all_episodes():
