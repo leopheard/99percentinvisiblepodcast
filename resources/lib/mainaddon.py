@@ -9,7 +9,6 @@ def get_soup(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.text, 'html.parser')
 
-    
     print "type: ", type(soup)
     return soup
 
@@ -29,17 +28,17 @@ def get_playable_podcast(soup):
             link = link.get('url')
             print "\n\nLink: ", link
 
-            title = content.find('itunes:title')
+            title = content.find('title')
             title = title.get_text()
 
-            desc = content.find('itunes:subtitle')
-            desc = desc.get_text()
+#            desc = content.find('itunes:subtitle')
+#            desc = desc.get_text()
 
-            thumbnail = content.find('itunes:image')
-            thumbnail = title.get_text('href')
+#            thumbnail = content.find('itunes:image')
+#            thumbnail = title.get_text('href')
 
-            episode = content.find('itunes:episode')
-            episode = title.get_text()
+#            episode = content.find('itunes:episode')
+#            episode = title.get_text()
 
         except AttributeError:
             continue
@@ -47,9 +46,9 @@ def get_playable_podcast(soup):
         item = {
                 'url': link,
                 'title': title,
-                'desc': desc,
-                'thumbnail': thumbnail,
-                'episode': episode,
+#                'desc': desc,
+                'thumbnail': "/home/osmc/.kodi/addons/plugin.audio.NPRpodcasts/resources/media/icon.jpg"
+#                'episode': episode,
         }
         
         subjects.append(item) 
@@ -88,17 +87,17 @@ def get_playable_podcast1(soup):
             link = link.get('url')
             print "\n\nLink: ", link
 
-            title = content.find('itunes:title')
+            title = content.find('title')
             title = title.get_text()
 
-            desc = content.find('itunes:subtitle')
-            desc = desc.get_text()
+#            desc = content.find('itunes:subtitle')
+#            desc = desc.get_text()
 
-            thumbnail = content.find('itunes:image')
-            thumbnail = title.get_text('href')
+#            thumbnail = content.find('itunes:image')
+#            thumbnail = title.get_text('href')
 
-            episode = content.find('itunes:episode')
-            episode = title.get_text()
+#            episode = content.find('itunes:episode')
+#            episode = title.get_text()
 
         except AttributeError:
             continue
@@ -107,8 +106,8 @@ def get_playable_podcast1(soup):
                 'url': link,
                 'title': title,
                 'desc': desc,
-                'thumbnail': thumbnail,
-                'episode': episode,
+                'thumbnail': "/home/osmc/.kodi/addons/plugin.audio.NPRpodcasts/resources/media/icon.jpg"
+#                'episode': episode,
         }
         
         subjects.append(item) 
@@ -127,7 +126,7 @@ def compile_playable_podcast1(playable_podcast1):
             'label': podcast['title'],
             'thumbnail': podcast['thumbnail'],
             'path': podcast['url'],
-            'info': podcast['desc'],
+#            'info': podcast['desc'],
             'is_playable': True,
     })
 
